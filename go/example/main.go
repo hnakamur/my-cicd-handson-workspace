@@ -2,8 +2,13 @@ package main
 
 import "fmt"
 
-var version string // ビルド時にldflagsフラグ経由でバージョンを埋め込むための変数
-
 func main() {
 	fmt.Printf("Example %s\n", version)
+}
+
+func Version() string {
+	if info, ok := debug.ReadBuildInfo(); ok {
+		return info.Main.Version
+	}
+	return "(devel)"
 }
