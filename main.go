@@ -1,12 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime/debug"
+)
 
 func main() {
-	fmt.Printf("Example %s\n", version)
+	fmt.Printf("Example %s\n", version())
 }
 
-func Version() string {
+func version() string {
 	if info, ok := debug.ReadBuildInfo(); ok {
 		return info.Main.Version
 	}
